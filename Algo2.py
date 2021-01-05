@@ -1,3 +1,5 @@
+import math as m
+
 def CountNumberOfWays(nbRungs, Modulo):
 
     print(nbRungs)
@@ -26,4 +28,31 @@ def Solution(A, B):
     print(result)
     return result
 
-print(CountNumberOfWays(40,10000000))
+def CountBis(nbRungs, Modulo):
+    
+    result = 0
+    n = nbRungs
+    p = 0
+
+    a = m.factorial(n)
+    b = 1
+    c = a
+
+    while n >= p:
+
+        result = (result + a//b//c) % Modulo
+
+        a = a // n
+        b = b * (p + 1)
+        if not (n-p-1 == 0 or n-p == 0):
+            c = c // (n-p) // (n-p-1)
+        else:
+            c = 1
+
+        n-=1
+        p+=1
+
+    print(result)
+    return result
+
+CountBis(10000, 1000)
