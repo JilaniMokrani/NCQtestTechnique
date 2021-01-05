@@ -66,10 +66,7 @@ def CountTris(nbRungs, Modulo):
         else:
             c = 1
 
-        print(c)
         n = n -1
         p = p + 1
 
     return result % Modulo
-
-print(CountTris(1000000))
