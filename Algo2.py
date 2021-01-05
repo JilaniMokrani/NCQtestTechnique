@@ -25,3 +25,5 @@ def Solution(A, B):
 
     print(result)
     return result
+
+print(CountNumberOfWays(40,10000000))
