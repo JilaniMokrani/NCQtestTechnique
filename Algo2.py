@@ -2,8 +2,6 @@ import math as m
 
 def CountNumberOfWays(nbRungs, Modulo):
 
-    print(nbRungs)
-
     if nbRungs == 2:
         return 2 % Modulo    #either 1,1 or 2
     elif nbRungs == 1:
@@ -20,12 +18,11 @@ def Solution(A, B):
 
     for i in range(L):
         if not B[i] == 0:
-            result.append(CountNumberOfWays(A[i],B[i]))
+            result.append(CountTris(A[i],B[i]))
         else:
             result.append(0)
             print("B[" + str(i) + "] = 0")
 
-    print(result)
     return result
 
 def CountBis(nbRungs, Modulo):
@@ -52,7 +49,27 @@ def CountBis(nbRungs, Modulo):
         n-=1
         p+=1
 
-    print(result)
-    return result
+    return result % Modulo
 
-CountBis(10000, 1000)
+def CountTris(nbRungs, Modulo):
+    
+    result = 0
+    n = nbRungs
+    p = 0
+
+    c = 1
+
+    while n >= p:
+        result = result + (c % Modulo)
+        if n-p-1 > 1:
+            c = c * (n-p) * (n-p-1) // n //(p+1)
+        else:
+            c = 1
+
+        print(c)
+        n = n -1
+        p = p + 1
+
+    return result % Modulo
+
+print(CountTris(1000000))
